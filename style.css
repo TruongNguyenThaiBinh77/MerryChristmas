@@ -1,0 +1,556 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+  overflow: hidden;
+}
+
+.snow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  perspective: 1000px;
+}
+
+.snow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: snowfall linear forwards;
+}
+
+@keyframes snowfall {
+  from {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+.christmas-content {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+}
+
+.christmas-title {
+  position: relative;
+  transform: none;
+  margin-bottom: 20px;
+  font-family: 'Mountains of Christmas', cursive;
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.christmas-title-2 {
+  position: relative;
+  transform: none;
+  text-align: center;
+  margin-top: 70px;
+  font-family: 'Mountains of Christmas', cursive;
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+  }
+  to {
+    text-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000;
+  }
+}
+
+.music-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px;
+  font-size: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s;
+  z-index: 1000;
+}
+
+.music-toggle:hover {
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.christmas-tree {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+}
+
+.tree {
+  right: 1%;
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.pine-tree-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.star-top {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  color: gold;
+  animation: starGlow 2s infinite alternate;
+  z-index: 2;
+}
+
+.bells-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.ornament {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  animation: twinkle 1.5s infinite alternate;
+}
+
+.bell {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: gold;
+  border-radius: 50% 50% 45% 45%;
+  animation: bellRing 2s infinite;
+}
+
+.bell::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: #444;
+  border-radius: 50%;
+}
+
+@keyframes bellRing {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+}
+
+@keyframes starGlow {
+  from {
+    filter: drop-shadow(0 0 2px gold);
+  }
+  to {
+    filter: drop-shadow(0 0 10px gold);
+  }
+}
+
+.red {
+  background: #ff4444;
+}
+.gold {
+  background: #ffdd44;
+}
+.silver {
+  background: #dddddd;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 1s infinite alternate;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.gift {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background: url('https://firebasestorage.googleapis.com/v0/b/webai-54992.appspot.com/o/Gift_Flat_Icon_Vector.svg?alt=media&token=8bb72a2d-183c-462b-a1b8-e42af9bf52e0')
+    no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  transition: transform 0.3s;
+  z-index: 100;
+}
+
+.gift:hover {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.gift-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+  font-size: 1.2em;
+  color: #333;
+  display: none;
+  z-index: 2000;
+  animation: popup 0.5s ease-out;
+  text-align: center;
+}
+
+@keyframes popup {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10px) translateZ(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100vh) translateZ(500px) rotate(360deg);
+  }
+}
+
+.light {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  from {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Hiệu ứng mây */
+.clouds {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cloud {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  opacity: 0.6;
+  filter: brightness(0.8);
+}
+
+@keyframes float {
+  from {
+    left: -150px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/* Hiệu ứng pháo hoa */
+.fireworks-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.firework-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 1;
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Hiệu ứng particle chuột */
+.mouse-particle {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: #1fa800;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sparkle 1s linear forwards;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* Hiệu ứng cây thông */
+.tree {
+  transition: transform 0.3s;
+}
+
+.tree.shake {
+  animation: shakeTree 0.5s ease-in-out;
+}
+
+@keyframes shakeTree {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px) rotate(-5deg);
+  }
+  75% {
+    transform: translateX(5px) rotate(5deg);
+  }
+}
+
+.star-top {
+  position: absolute;
+  top: -3%;
+  left: 53%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  animation: starTwinkle 1.5s infinite alternate;
+}
+
+@keyframes starTwinkle {
+  from {
+    opacity: 0.5;
+    transform: translateX(-50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+
+/* Hiệu ứng ánh sáng ông già Noel */
+.santa-container {
+  position: fixed;
+  top: 20%;
+  left: -200px;
+  animation: flyAcross 15s linear infinite;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.santa {
+  width: 200px;
+  height: auto;
+  margin-right: -30px;
+  z-index: 1;
+}
+
+@keyframes flyAcross {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(calc(25vw)) translateY(-30px);
+  }
+  50% {
+    transform: translateX(calc(50vw)) translateY(0);
+  }
+  75% {
+    transform: translateX(calc(75vw)) translateY(-30px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 400px)) translateY(0);
+  }
+}
+
+/* Hiệu ứng countdown */
+.countdown {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  font-size: 1.2em;
+  z-index: 1000;
+}
+
+.countdown span {
+  color: #ff4444;
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+/* Media Queries cho responsive */
+@media screen and (max-width: 768px) {
+  .christmas-title {
+    font-size: 3rem; /* Giảm kích thước chữ trên mobile */
+  }
+
+  .countdown {
+    font-size: 1em;
+    padding: 8px 15px;
+    width: 90%;
+    text-align: center;
+  }
+
+  .tree {
+    width: 200px;
+    height: 300px;
+    right: 3%;
+  }
+
+  .star-top {
+    font-size: 30px;
+    top: -15px;
+  }
+
+  .santa {
+    width: 300px;
+  }
+
+  .music-toggle {
+    padding: 10px;
+    font-size: 24px;
+  }
+
+  .cloud {
+    width: 60px;
+  }
+
+  .fireworks-container {
+    width: 100vw;
+    height: 50vh;
+  }
+
+  .christmas-content {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .christmas-title {
+    font-size: 2rem;
+  }
+
+  .countdown {
+    font-size: 0.9em;
+  }
+
+  .tree {
+    width: 150px;
+    height: 250px;
+    right: 3%;
+  }
+
+  .star-top {
+    font-size: 24px;
+    top: -12px;
+  }
+
+  .santa {
+    width: 300px;
+  }
+
+  .cloud {
+    width: 40px;
+  }
+
+  .gift-popup {
+    width: 80%;
+    font-size: 1em;
+    padding: 15px;
+  }
+}
+
+.tiktok-logo {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  z-index: 1000;
+}
+
+.tiktok-logo img {
+  width: 35px;
+  height: auto;
+}
