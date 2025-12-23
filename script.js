@@ -1,6 +1,11 @@
+const isLowEnd =
+  window.innerWidth < 768 ||
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const MAX_SNOW = isLowEnd ? 80 : 150;
+
 function createStars() {
   const starsContainer = document.querySelector('.snow-container');
-  const numberOfStars = 100;
+  const numberOfStars = isLowEnd ? 40 : 100;
 
   for (let i = 0; i < numberOfStars; i++) {
     const star = document.createElement('div');
@@ -17,6 +22,8 @@ createStars();
 
 function createSnow() {
   const snowContainer = document.querySelector('.snow-container');
+  if (snowContainer.childElementCount >= MAX_SNOW) return;
+
   const snow = document.createElement('div');
   snow.classList.add('snow');
 
@@ -66,7 +73,7 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Tạo tuyết với tần suất thấp hơn
-setInterval(createSnow, 50);
+setInterval(createSnow, isLowEnd ? 250 : 80);
 
 // Thêm vào cuối file
 const musicBtn = document.querySelector('.music-toggle');
@@ -92,7 +99,7 @@ function moveSanta() {
     if (rect.left > window.innerWidth) {
       santaContainer.style.left = '-200px';
     }
-  }, 100);
+  }, isLowEnd ? 400 : 120);
 }
 
 // Gọi hàm di chuyển ông già Noel
@@ -160,11 +167,11 @@ function createGift() {
       clearInterval(fall);
       gift.remove();
     }
-  }, 20);
+  }, isLowEnd ? 28 : 20);
 }
 
 // Giảm tần suất tạo quà
-setInterval(createGift, 1000); // 8 giây một lần
+setInterval(createGift, isLowEnd ? 5000 : 1500); // 8 giây một lần
 
 function addTreeLights() {
   const tree = document.querySelector('.tree');
@@ -219,7 +226,7 @@ function animateClouds() {
 // Hiệu ứng pháo hoa
 function createFirework(x, y) {
   const colors = ['#ff0', '#ff4', '#4ff', '#f4f', '#4f4'];
-  const particles = 30;
+  const particles = isLowEnd ? 12 : 30;
   const container = document.querySelector('.fireworks-container');
 
   // Giới hạn tọa độ y trong phạm vi container
@@ -385,12 +392,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('click', (e) => {
     createFirework(e.pageX, e.pageY);
-    createParticle(e);
+    if (!isLowEnd) createParticle(e);
   });
 
-  document.addEventListener('mousemove', (e) => {
-    if (Math.random() < 0.1) {
-      createParticle(e);
-    }
-  });
+  if (!isLowEnd) {
+    document.addEventListener('mousemove', (e) => {
+      if (Math.random() < 0.04) {
+        createParticle(e);
+      }
+    });
+  }
 });
