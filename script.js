@@ -31,7 +31,7 @@ function createSnow() {
   snow.style.left = Math.random() * 100 + '%';
 
   // Tốc độ rơi và kích thước ngẫu nhiên (di động rơi nhanh hơn)
-  const duration = isLowEnd ? Math.random() * 2 + 2 : Math.random() * 5 + 5;
+  const duration = isLowEnd ? Math.random() * 3 + 3 : Math.random() * 5 + 5;
   const size = Math.random() * 3 + 2;
 
   snow.style.width = size + 'px';
@@ -73,7 +73,7 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Tạo tuyết
-setInterval(createSnow, isLowEnd ? 90 : 80);
+setInterval(createSnow, isLowEnd ? 120 : 80);
 
 // Thêm vào cuối file
 const musicBtn = document.querySelector('.music-toggle');
