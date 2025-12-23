@@ -30,8 +30,8 @@ function createSnow() {
   // Vị trí ngẫu nhiên theo chiều ngang
   snow.style.left = Math.random() * 100 + '%';
 
-  // Tốc độ rơi và kích thước ngẫu nhiên
-  const duration = Math.random() * 5 + 5;
+  // Tốc độ rơi và kích thước ngẫu nhiên (di động rơi nhanh hơn)
+  const duration = isLowEnd ? Math.random() * 3 + 3 : Math.random() * 5 + 5;
   const size = Math.random() * 3 + 2;
 
   snow.style.width = size + 'px';
@@ -72,8 +72,8 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Tạo tuyết với tần suất thấp hơn
-setInterval(createSnow, isLowEnd ? 250 : 80);
+// Tạo tuyết
+setInterval(createSnow, isLowEnd ? 120 : 80);
 
 // Thêm vào cuối file
 const musicBtn = document.querySelector('.music-toggle');
@@ -153,9 +153,9 @@ function createGift() {
 
   // Animation rơi mượt mà hơn
   let pos = -50;
-  let speed = 1;
-  const maxSpeed = 3;
-  const acceleration = 0.05;
+  let speed = isLowEnd ? 1.8 : 1;
+  const maxSpeed = isLowEnd ? 4 : 3;
+  const acceleration = isLowEnd ? 0.08 : 0.05;
 
   const fall = setInterval(() => {
     speed = Math.min(speed + acceleration, maxSpeed);
@@ -167,7 +167,7 @@ function createGift() {
       clearInterval(fall);
       gift.remove();
     }
-  }, isLowEnd ? 28 : 20);
+  }, isLowEnd ? 24 : 20);
 }
 
 // Giảm tần suất tạo quà
