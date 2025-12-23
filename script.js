@@ -73,7 +73,7 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Tạo tuyết
-setInterval(createSnow, isLowEnd ? 100 : 40);
+setInterval(createSnow, isLowEnd ? 80 : 40);
 
 // Thêm vào cuối file
 const musicBtn = document.querySelector('.music-toggle');
