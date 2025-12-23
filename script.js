@@ -31,7 +31,7 @@ function createSnow() {
   snow.style.left = Math.random() * 100 + '%';
 
   // Tốc độ rơi và kích thước ngẫu nhiên (di động rơi nhanh hơn)
-  const duration = isLowEnd ? Math.random() * 3 + 3 : Math.random() * 5 + 5;
+  const duration = isLowEnd ? Math.random() * 2 + 2 : Math.random() * 5 + 5;
   const size = Math.random() * 3 + 2;
 
   snow.style.width = size + 'px';
@@ -73,7 +73,7 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Tạo tuyết
-setInterval(createSnow, isLowEnd ? 120 : 80);
+setInterval(createSnow, isLowEnd ? 90 : 80);
 
 // Thêm vào cuối file
 const musicBtn = document.querySelector('.music-toggle');
@@ -153,9 +153,9 @@ function createGift() {
 
   // Animation rơi mượt mà hơn
   let pos = -50;
-  let speed = isLowEnd ? 1.8 : 1;
-  const maxSpeed = isLowEnd ? 4 : 3;
-  const acceleration = isLowEnd ? 0.08 : 0.05;
+  let speed = isLowEnd ? 2.2 : 1;
+  const maxSpeed = isLowEnd ? 5 : 3.2;
+  const acceleration = isLowEnd ? 0.11 : 0.06;
 
   const fall = setInterval(() => {
     speed = Math.min(speed + acceleration, maxSpeed);
@@ -167,11 +167,11 @@ function createGift() {
       clearInterval(fall);
       gift.remove();
     }
-  }, isLowEnd ? 24 : 20);
+  }, isLowEnd ? 22 : 20);
 }
 
 // Giảm tần suất tạo quà
-setInterval(createGift, isLowEnd ? 5000 : 1500); // 8 giây một lần
+setInterval(createGift, isLowEnd ? 2500 : 1200); // 8 giây một lần
 
 function addTreeLights() {
   const tree = document.querySelector('.tree');
